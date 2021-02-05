@@ -1,3 +1,20 @@
-#app{
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+#app {
     text-align: center;
+}
+
+#login-link{
+    color: white;
+}
+#login-link:hover{
+    color: lightskyblue;
+    text-decoration: none;
+}
+#forum-link{
+    color: white;
+}
+#forum-link:hover{
+    color: lightskyblue;
+    text-decoration: none;
 }
