@@ -7,7 +7,7 @@ export class LogIn extends React.Component {
         this.state = {
             username : '',
             password : '',
-            
+            jsonData : {}
         }
         this.handleFormChange = this.handleFormChange.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -24,8 +24,17 @@ export class LogIn extends React.Component {
 
     handleFormSubmit(event){
         event.preventDefault();
-      
-
+        var payload = {'name': this.state.username, 'password': this.state.password};
+        console.log(payload);
+        var http = new XMLHttpRequest();
+        var url = 'http://localhost:1515/login';
+        http.open("POST", url);
+        http.setRequestHeader("Content-Type", "application/json");
+        http.send(JSON.stringify(payload));
+        http.onreadystatechange = () => {
+            console.log(http.responseText);
+            // this.setState({jsonData: JSON.parse(http.responseText)});
+        }
         document.getElementById('login-form').reset();
     }
     render(){
