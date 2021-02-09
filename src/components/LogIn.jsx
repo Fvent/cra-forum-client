@@ -1,11 +1,13 @@
 import React from 'react';
 
+
 export class LogIn extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             username : '',
-            password : ''
+            password : '',
+            
         }
         this.handleFormChange = this.handleFormChange.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -22,7 +24,8 @@ export class LogIn extends React.Component {
 
     handleFormSubmit(event){
         event.preventDefault();
-        
+      
+
         document.getElementById('login-form').reset();
     }
     render(){
@@ -34,6 +37,8 @@ export class LogIn extends React.Component {
                 <input type="password" name="password" id="password" onChange={this.handleFormChange} />
                 <button type="submit">submit</button>
             </form>
+
+            
         </div>);
     }
 }

@@ -15,10 +15,14 @@ export class Navigation extends React.Component {
     render(){
         return (<Router>
             
-            <Navbar bg="dark">
-                <Nav className="mr-auto">
-                    <Link id="login-link" to="/login"><h2>Login</h2></Link>
-                    <Link id="forum-link" to="/forum"><h2>Forum</h2></Link>
+            {/* <Nav id="navigation-nav" className="justify-content-right">
+                <Nav.Item><Nav.Link id="login-link" href="/login">Login</Nav.Link></Nav.Item>
+                
+            </Nav> */}
+            <Navbar bg="dark" expand="lg">
+                <Navbar.Brand href="/home">Forum Client</Navbar.Brand>
+                <Nav className="ml-auto">
+                    <Link id="login-link" to="/login"><h3>Login</h3></Link>
                 </Nav>
             </Navbar>
 

@@ -6,10 +6,7 @@ import { Navigation } from "./features/Navigation";
 class App extends React.Component {
     render(){
         return ( <div id="app">
-            <h1>Client Forum App</h1>
             <Navigation />
-
-            
         </div>); 
     }
 }
