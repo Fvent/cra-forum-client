@@ -1,5 +1,7 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
+const NVR = "Error occured on server";
 
 export class LogIn extends React.Component {
     constructor(props){
@@ -32,8 +34,14 @@ export class LogIn extends React.Component {
         http.setRequestHeader("Content-Type", "application/json");
         http.send(JSON.stringify(payload));
         http.onreadystatechange = () => {
+            
+        if(http.responseText === NVR){
+            console.log(NVR);
+        }else{
             console.log(http.responseText);
-            // this.setState({jsonData: JSON.parse(http.responseText)});
+            this.props.parentCallback(true);
+        }
+            
         }
         document.getElementById('login-form').reset();
     }

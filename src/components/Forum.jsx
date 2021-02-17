@@ -27,8 +27,20 @@ export class Forum extends React.Component {
 
     handleCommentSubmit(event){
       event.preventDefault();
-      console.log(this.state.formUserInput);
-      console.log(this.state.formCommentInput);
+      // console.log(this.state.formUserInput);
+      // console.log(this.state.formCommentInput);
+
+      var payload = {'user': this.state.formUserInput, 'comment': this.state.formCommentInput};
+        console.log(payload);
+        var http = new XMLHttpRequest();
+        var url = 'http://localhost:1515/addcomment';
+        http.open("POST", url);
+        http.setRequestHeader("Content-Type", "application/json");
+        http.send(JSON.stringify(payload));
+        http.onreadystatechange = () => {
+            
+        }
+
       document.getElementById('forum-form').reset();
     }
 
@@ -43,8 +55,11 @@ export class Forum extends React.Component {
 
     render(){
         return (<div id="forum">
-            <h1>Forum</h1>
+
+          <div id="forum-display">
+          <h1>Forum</h1>
            { this.state.loading ? <h2>Loading...</h2>: this.state.foruminfo.map((item) => <li key={item._id}>{item.user}&nbsp;{item.comment}</li>)}
+          </div>
             
             <form id="forum-form" onSubmit={this.handleCommentSubmit}>
               <input type="text" name="formUserInput" id="userinput" onChange={this.handleInputChange} />
