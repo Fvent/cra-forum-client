@@ -13,16 +13,20 @@ export class Forum extends React.Component {
 
         this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.getForumInfo = this.getForumInfo.bind(this);
     }
     
     async componentDidMount() {
+        this.getForumInfo();
+    }
+
+    async getForumInfo(){ 
         const url = 'http://localhost:1515/viewcomments';
         const response = await fetch(url);
         const data = await response.json();
-       
+      
           this.setState({loading: false, foruminfo: data})
           console.log(this.state.foruminfo);
-        
     }
 
     handleCommentSubmit(event){
@@ -38,7 +42,7 @@ export class Forum extends React.Component {
         http.setRequestHeader("Content-Type", "application/json");
         http.send(JSON.stringify(payload));
         http.onreadystatechange = () => {
-            
+            this.getForumInfo();
         }
 
       document.getElementById('forum-form').reset();
@@ -58,7 +62,9 @@ export class Forum extends React.Component {
 
           <div id="forum-display">
           <h1>Forum</h1>
-           { this.state.loading ? <h2>Loading...</h2>: this.state.foruminfo.map((item) => <li key={item._id}>{item.user}&nbsp;{item.comment}</li>)}
+           { this.state.loading ? 
+           <h2>Loading...</h2> : 
+           this.state.foruminfo.map((item) => <li key={item._id}>{item.user}&nbsp;{item.comment}</li>)}
           </div>
             
             <form id="forum-form" onSubmit={this.handleCommentSubmit}>
