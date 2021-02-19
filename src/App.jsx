@@ -11,13 +11,17 @@ export class App extends React.Component {
         super(props);
 
         this.state = {
-            loggedIn : false
+            loggedIn : false,
+            message: ''
         }
         this.handleCallback = this.handleCallback.bind(this);
     }
 
-    handleCallback(val){
-        this.setState({loggedIn: val});
+    handleCallback(val, msg){
+        this.setState({
+            loggedIn: val,
+            message: msg
+        });
     }
 
     render(){
@@ -25,8 +29,10 @@ export class App extends React.Component {
             <Router>
                 <Navbar bg="dark" expand="lg">
                     <Navbar.Brand href="/home">Forum Client</Navbar.Brand>
+                    
                     <Nav className="ml-auto">
-                        <Link id="login-link" to="/login"><h3>Login</h3></Link>
+                        {this.state.loggedIn ? null : <Link id="login-link" to="/login"><h3>Login</h3></Link> }
+                        
                     </Nav>
                 </Navbar>
 
@@ -37,7 +43,7 @@ export class App extends React.Component {
                 <Route path="/login" render={(props) => <LogIn {...props} parentCallback={this.handleCallback} />}/>
                 <Route render={() => <NotFound />}/>
                 </Switch>}
-                
+                <h3>{this.state.message}</h3>
             </Router>
 
             

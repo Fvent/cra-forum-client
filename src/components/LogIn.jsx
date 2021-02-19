@@ -35,11 +35,12 @@ export class LogIn extends React.Component {
         http.send(JSON.stringify(payload));
         http.onreadystatechange = () => {
             
-        if(http.responseText === NVR){
-            console.log(NVR);
+        if(http.responseText === '[]'){
+            console.log('not existing user');
+            this.props.parentCallback(false, 'not existing user');
         }else{
             console.log(http.responseText);
-            this.props.parentCallback(true);
+            this.props.parentCallback(true, '');
         }
             
         }
