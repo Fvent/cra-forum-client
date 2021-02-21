@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 
 const NVR = "Error occured on server";
 
@@ -50,10 +49,10 @@ export class LogIn extends React.Component {
         return (<div id="login">
             <h1>Login</h1>
             
-            <form id="login-form" onSubmit={this.handleFormSubmit} > 
-                <input type="text" name="username" id="username" onChange={this.handleFormChange} />
-                <input type="password" name="password" id="password" onChange={this.handleFormChange} />
-                <button type="submit">submit</button>
+            <form id="login-form" className="form-group" onSubmit={this.handleFormSubmit} > 
+                <input type="text" className="form-control" name="username" id="username" onChange={this.handleFormChange} />
+                <input type="password" className="form-control" name="password" id="password" onChange={this.handleFormChange} />
+                <button type="submit" className="btn btn-primary">Submit</button>
             </form>
 
             

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Form } from 'react-bootstrap';
 
 
 export class Forum extends React.Component {
@@ -67,10 +68,11 @@ export class Forum extends React.Component {
            this.state.foruminfo.map((item) => <li key={item._id}>{item.user}&nbsp;{item.comment}</li>)}
           </div>
             
-            <form id="forum-form" onSubmit={this.handleCommentSubmit}>
-              <input type="text" name="formUserInput" id="userinput" onChange={this.handleInputChange} />
-              <input type="text" name="formCommentInput" id="commentinput" onChange={this.handleInputChange} />
-              <button type="submit">submit</button>
+
+            <form id="forum-form" className="form-group" onSubmit={this.handleCommentSubmit}>
+              <input type="text"  className="form-control" name="formUserInput" id="userinput" onChange={this.handleInputChange} />
+              <textarea type="text" className="form-control" name="formCommentInput" id="commentinput" onChange={this.handleInputChange} />
+              <button type="submit" className="btn btn-primary">Submit</button>
             </form>
 
         </div>);
