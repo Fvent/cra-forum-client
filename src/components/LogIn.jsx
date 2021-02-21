@@ -38,8 +38,11 @@ export class LogIn extends React.Component {
             console.log('not existing user');
             this.props.parentCallback(false, 'not existing user');
         }else{
-            console.log(http.responseText);
-            this.props.parentCallback(true, '');
+            // console.log(http.responseText);
+            // console.log(JSON.parse(http.responseText.replaceAll('[','').replaceAll(']','')));
+            var jobj=JSON.parse(http.responseText.replaceAll('[','').replaceAll(']',''));
+
+            this.props.parentCallback(true, '', jobj);
         }
             
         }

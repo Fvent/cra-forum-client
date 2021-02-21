@@ -8,7 +8,7 @@ export class Forum extends React.Component {
         this.state = {
           loading : true,
           foruminfo : [],
-          formUserInput: '',
+          // formUserInput: '',
           formCommentInput: ''
         }
 
@@ -35,7 +35,7 @@ export class Forum extends React.Component {
       // console.log(this.state.formUserInput);
       // console.log(this.state.formCommentInput);
 
-      var payload = {'user': this.state.formUserInput, 'comment': this.state.formCommentInput};
+      var payload = {'user': sessionStorage.getItem('alias'), 'comment': this.state.formCommentInput};
         console.log(payload);
         var http = new XMLHttpRequest();
         var url = 'http://localhost:1515/addcomment';
@@ -52,7 +52,7 @@ export class Forum extends React.Component {
     handleInputChange(event){
         var nam = event.target.name;
         var val = event.target.value;
-        console.log(nam ,'--',val);
+        // console.log(nam ,'--',val);
         this.setState({
           [nam]: val
         });
@@ -70,7 +70,7 @@ export class Forum extends React.Component {
             
 
             <form id="forum-form" className="form-group" onSubmit={this.handleCommentSubmit}>
-              <input type="text"  className="form-control" name="formUserInput" id="userinput" onChange={this.handleInputChange} />
+              {/* <input type="text"  className="form-control" name="formUserInput" id="userinput" onChange={this.handleInputChange} /> */}
               <textarea type="text" className="form-control" name="formCommentInput" id="commentinput" onChange={this.handleInputChange} />
               <button type="submit" className="btn btn-primary">Submit</button>
             </form>

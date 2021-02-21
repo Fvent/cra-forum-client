@@ -17,11 +17,13 @@ export class App extends React.Component {
         this.handleCallback = this.handleCallback.bind(this);
     }
 
-    handleCallback(val, msg){
+    handleCallback(val, msg, userPayload){
         this.setState({
             loggedIn: val,
-            message: msg
+            message: msg,
         });
+        sessionStorage.setItem('name', userPayload.name);
+        sessionStorage.setItem('alias', userPayload.alias);
     }
 
     render(){
