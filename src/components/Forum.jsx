@@ -65,7 +65,8 @@ export class Forum extends React.Component {
           <h1>Forum</h1>
            { this.state.loading ? 
            <h2>Loading...</h2> : 
-           this.state.foruminfo.map((item) => <li key={item._id}><h4>{item.user}&nbsp;&nbsp;:&nbsp;&nbsp;{item.comment}</h4></li>)}
+          //  this.state.foruminfo.map((item) => <li key={item._id} className="list-group-item"><h4>{item.user}&nbsp;&nbsp;:&nbsp;&nbsp;{item.comment}</h4></li>)}
+          this.state.foruminfo.map((item)=><ul className="list-group list-group-horizontal"><li className="list-group-item">{item.user}</li><li className="list-group-item">{item.comment}</li></ul>)}
           </div>
             
 
