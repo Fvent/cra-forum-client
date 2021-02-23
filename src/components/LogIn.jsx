@@ -36,7 +36,7 @@ export class LogIn extends React.Component {
             
         if(http.responseText === '[]'){
             console.log('not existing user');
-            this.props.parentCallback(false, 'not existing user');
+            this.props.parentCallback(false, 'not existing user', '');
         }else{
             // console.log(http.responseText);
             // console.log(JSON.parse(http.responseText.replaceAll('[','').replaceAll(']','')));

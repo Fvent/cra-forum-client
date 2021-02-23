@@ -22,15 +22,18 @@ export class App extends React.Component {
             loggedIn: val,
             message: msg,
         });
-        sessionStorage.setItem('name', userPayload.name);
-        sessionStorage.setItem('alias', userPayload.alias);
+        if(this.state.loggedIn === true){
+            sessionStorage.setItem('name', userPayload.name);
+            sessionStorage.setItem('alias', userPayload.alias);
+        }
+        
     }
 
     render(){
         return (<div id="app"> 
             <Router>
                 <Navbar bg="dark" expand="lg">
-                    <Navbar.Brand href="/home">Forum Client</Navbar.Brand>
+                    <Navbar.Brand href="/home"><h1 id="nav-brand">Forum Client</h1></Navbar.Brand>
                     
                     <Nav className="ml-auto">
                         {this.state.loggedIn ? null : <Link id="login-link" to="/login"><h3>Login</h3></Link> }
