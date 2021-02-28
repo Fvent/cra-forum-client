@@ -5,6 +5,7 @@ import { LogIn } from './components/LogIn';
 import { Forum } from './components/Forum';
 import { NotFound } from './components/NotFound';
 import { Navbar, Nav } from 'react-bootstrap';
+import { Register } from './components/Register';
 
 export class App extends React.Component {
     constructor(props){
@@ -45,6 +46,7 @@ export class App extends React.Component {
                 <Switch>   
                 <Route path="/" exact render={(props) => <Home {...props} />} />
                 <Route path="/home" render={(props) => <Home {...props} />}/>
+                <Route path="/register" render={(props) => <Register {...props} />}/>
                 <Route path="/login" render={(props) => <LogIn {...props} parentCallback={this.handleCallback} />}/>
                 <Route render={() => <NotFound />}/>
                 </Switch>}
