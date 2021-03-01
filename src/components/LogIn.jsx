@@ -1,4 +1,7 @@
 import React from 'react';
+import forge from 'node-forge';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const NVR = "Error occured on server";
 
@@ -10,6 +13,8 @@ export class LogIn extends React.Component {
             password : '',
             jsonData : {}
         }
+        this.publicKey = forge.pki.publicKeyFromPem(process.env.REACT_APP_PUBLIC_KEY);
+
         this.handleFormChange = this.handleFormChange.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
@@ -25,7 +30,7 @@ export class LogIn extends React.Component {
 
     handleFormSubmit(event){
         event.preventDefault();
-        var payload = {'name': this.state.username, 'password': this.state.password};
+        var payload = {'name': this.state.username, 'password': this.publicKey.encrypt(Buffer.from(this.state.password).toString('base64'))};
         console.log(payload);
         var http = new XMLHttpRequest();
         var url = 'http://localhost:1515/login';
