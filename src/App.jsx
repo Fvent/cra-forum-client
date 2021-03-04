@@ -37,8 +37,8 @@ export class App extends React.Component {
                     <Navbar.Brand href="/home"><h1 id="nav-brand">Forum Client</h1></Navbar.Brand>
                     
                     <Nav className="ml-auto">
-                        {this.state.loggedIn ? null : <Link id="login-link" to="/login"><h3>Login</h3></Link> }
-                        
+                        <Link id="register-link" to="/register" className="nav-link" ><h3>Register</h3></Link>
+                        {this.state.loggedIn ? null : <Link id="login-link" to="/login" className="nav-link" ><h3>Login</h3></Link> }
                     </Nav>
                 </Navbar>
 

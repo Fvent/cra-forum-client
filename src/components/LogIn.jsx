@@ -57,9 +57,15 @@ export class LogIn extends React.Component {
         return (<div id="login">
             <h1>Login</h1>
             
-            <form id="login-form" className="form-group" onSubmit={this.handleFormSubmit} > 
-                <input type="text" className="form-control" name="username" id="username" onChange={this.handleFormChange} />
-                <input type="password" className="form-control" name="password" id="password" onChange={this.handleFormChange} />
+            <form id="login-form" className="form-group" onSubmit={this.handleFormSubmit} >
+                <div className="label-control">
+                    <label for="username" className="form-label"><h4>Username:&nbsp;&nbsp;</h4></label>
+                    <input type="text" className="form-control" name="username" id="username" onChange={this.handleFormChange} />    
+                </div> 
+                <div className="label-control">
+                    <label for="password" className="form-label"><h4>Password:&nbsp;&nbsp;</h4></label>
+                    <input type="password" className="form-control" name="password" id="password" onChange={this.handleFormChange} />
+                </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
 

@@ -54,13 +54,23 @@ export class Register extends React.Component {
 
     render(){
         return (<div id="register-component">
-            <form id="register-form" onSubmit={this.handleFormSubmit}>
-                <label for="name">Name: </label>
-                <input id="register-name" name="name" type="text" onChange={this.handleFormChange} />
-                <label for="alias">Alias: </label>
-                <input id="register-alias" name="alias" type="text" onChange={this.handleFormChange} />
-                <label for="password">Password: </label>
-                <input id="register-password" name="password" type="password" onChange={this.handleFormChange} />
+            <h2>Register</h2>
+            <form id="register-form" className="form-group" onSubmit={this.handleFormSubmit}>
+                <div className="label-control">
+                    <label for="name" className="form-label"><h4>Name:&nbsp;&nbsp;</h4></label>
+                    <input id="register-name" className="form-control" name="name" type="text" onChange={this.handleFormChange} />
+                </div>
+
+                <div className="label-control">
+                    <label for="alias" className="form-label"><h4>Alias:&nbsp;&nbsp;</h4></label>
+                    <input id="register-alias" className="form-control" name="alias" type="text" onChange={this.handleFormChange} /> 
+                </div>
+
+                <div className="label-control">
+                    <label for="password" className="form-label"><h4>Password:&nbsp;&nbsp;</h4></label>
+                    <input id="register-password" className="form-control" name="password" type="password" onChange={this.handleFormChange} />
+                </div>
+
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
         </div>);
